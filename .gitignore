@@ -13,3 +13,5 @@ postgres_data/
 # IDEs
 .vscode/
 .idea/
+
+pgadmin_servers.json
