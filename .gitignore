@@ -15,3 +15,9 @@ postgres_data/
 .idea/
 
 pgadmin_servers.json
+
+# Jupyter Checkpoints
+.ipynb_checkpoints/
+
+# Respaldos de Base de Datos
+*.sql
