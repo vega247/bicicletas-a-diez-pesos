@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Docker / Bases de datos
+postgres_data/
+pgadmin_data/
+.env
+.env.local
+
+# pgAdmin
+.pgadmin/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Ignorar archivos shapefiles pesados
+*.shp
+*.shx
+*.dbf
+*.prj
+*.gpg
+
+# Generados localmente
+Mapa/estaciones_map.html
+*.html
+
+# Caché (archivos JSON pesados)
+cache/
+*.json
+.pytest_cache/
+.coverage
+
+# Logs
+*.log
+logs/
+
+# Datos / Modelos
+data/
+*.pkl
+*.pickle
+node_modules/

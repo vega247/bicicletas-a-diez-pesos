@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    container_name: ecobici_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: alejandro_user
+      POSTGRES_PASSWORD: ecobici_password
+      POSTGRES_DB: ecobici_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: ecobici_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ecobici.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "8080:80"
+    volumes:
+      - ./pgadmin_servers.json:/pgadmin4/servers.json
+    depends_on:
+      - db
+
+  graph_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.graph
+    container_name: ecobici_graph_worker
+    restart: "no"
+    depends_on:
+      - db
+    environment:
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: ecobici_db
+      PGUSER: alejandro_user
+      PGPASSWORD: ecobici_password
+    volumes:
+      - ./:/app
+    command: python graph_processing.py
+
+volumes:
+  postgres_data:
