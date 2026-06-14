@@ -13,3 +13,11 @@ postgres_data/
 # IDEs
 .vscode/
 .idea/
+
+pgadmin_servers.json
+
+# Jupyter Checkpoints
+.ipynb_checkpoints/
+
+# Respaldos de Base de Datos
+*.sql
